@@ -1,18 +1,18 @@
 package vn.edu.quanlysinhvien;
 
+import vn.edu.quanlysinhvien.ui.LoginDialog;
 import vn.edu.quanlysinhvien.ui.MainFrame;
 import javax.swing.*;
-import java.awt.*;
 
 public final class Main {
-    private Main() {}
+    private Main() { }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ignored) { }
-            MainFrame frame = new MainFrame();
-            frame.setVisible(true);
+            try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
+            catch (Exception ignored) { }
+            LoginDialog login = new LoginDialog(null);
+            login.setVisible(true);
+            if (login.isAuthenticated()) new MainFrame().setVisible(true);
         });
     }
 }
